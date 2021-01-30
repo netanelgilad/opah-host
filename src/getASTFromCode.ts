@@ -1,6 +1,6 @@
-import { transformAsync } from '@babel/core';
-import { File } from '@babel/types';
-import { Map } from 'immutable';
+import { transformAsync } from "@babel/core";
+import { File } from "@babel/types";
+import { Map } from "immutable";
 
 export type ASTStore = Map<string, File>;
 
@@ -14,17 +14,11 @@ export async function getASTFromCode(
     const { ast } = (await transformAsync(code, {
       filename,
       ast: true,
-      presets: [
-        require('@babel/preset-typescript'),
-        [
-          require('@babel/preset-env'),
-          {
-            targets: {
-              node: 'current',
-            },
-            modules: false,
-          },
-        ],
+      presets: [require("@babel/preset-typescript")],
+      plugins: [
+        require("@babel/plugin-proposal-optional-catch-binding"),
+        require("@babel/plugin-proposal-optional-chaining"),
+        require("@babel/plugin-proposal-nullish-coalescing-operator"),
       ],
     }))!;
 
