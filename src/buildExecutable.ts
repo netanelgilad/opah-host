@@ -8,20 +8,20 @@ import { exec } from "pkg";
 import { directory } from "tempy";
 import {
   CoreModulesLocations,
-  getCodeFromExecutionProgram
+  getCodeFromExecutionProgram,
 } from "./getCodeFromExecutionProgram";
 
 export async function buildExecutable(
   program: Program,
   coreModulesLocations: CoreModulesLocations,
   options: {
-    target: "host";
+    target: "host" | "node14-linux";
     output: string;
   }
 ) {
   const tmpDir = directory();
   await copy(coreModulesLocations["@opah/core"], join(tmpDir, "core"));
-  await outputFile(join(tmpDir, "dictionary/.keep"), '');
+  await outputFile(join(tmpDir, "dictionary/.keep"), "");
   await copy(coreModulesLocations["@opah/host"], join(tmpDir, "host"));
   await copy(
     coreModulesLocations["@opah/immutable"],
@@ -30,7 +30,7 @@ export async function buildExecutable(
   writeFileSync(
     join(tmpDir, "pkg.config.json"),
     JSON.stringify({
-      assets: ["./core/bootstrap.js", "./core/common.js", './dictionary'],
+      assets: ["./core/bootstrap.js", "./core/common.js", "./dictionary"],
     })
   );
 
