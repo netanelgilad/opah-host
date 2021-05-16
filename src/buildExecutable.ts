@@ -15,7 +15,7 @@ export async function buildExecutable(
   program: Program,
   coreModulesLocations: CoreModulesLocations,
   options: {
-    target: "host" | "node14-linux";
+    target: "host" | "node14-linux" | "node14-macos";
     output: string;
   }
 ) {
