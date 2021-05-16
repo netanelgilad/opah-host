@@ -1,6 +1,6 @@
 {
   "name": "opah-host",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "files": [
     "dist",
@@ -9,7 +9,8 @@
     "host.d.ts"
   ],
   "scripts": {
-    "build": "ts-node -T build.ts"
+    "build": "ts-node -T build.ts",
+    "prepublishOnly": "ts-node -T build.ts"
   },
   "dependencies": {
     "@babel/types": "^7.12.12"
