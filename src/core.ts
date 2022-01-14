@@ -11,4 +11,4 @@ export { getOutOfScopeReferences } from './getOutOfScopeReferences';
 export { replaceReferencesToCanonicalReferences } from './replaceReferencesToCanonicalNames';
 export { replaceNodesByType } from './replaceNodesByType';
 
-export { getCodeFromExecutionProgram } from "./getCodeFromExecutionProgram"
+export { getCodeFromExecutionProgram } from "./getCodeFromExecutionProgram";
